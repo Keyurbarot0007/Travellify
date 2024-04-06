@@ -43,8 +43,7 @@ export default function Header() {
             <>
                 <header>
                     <Link to="/home" className="logo">
-                        <img src={yashlogo} alt="" />
-                        Blogs
+                        Blogify
                     </Link>
                     <nav onClick={(ev) => handleToggle(ev, true)} className="flex flex-row gap-2">
                         {userName &&
@@ -101,8 +100,7 @@ export default function Header() {
     }
     return <header>
         <Link to="/home" className="logo">
-            <img src={yashlogo} alt="" />
-            Blogs
+            Blogify
         </Link>
         <nav>
             {userName && (

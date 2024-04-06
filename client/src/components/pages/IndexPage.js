@@ -13,7 +13,7 @@ export default function IndexPage() {
                 setPosts(posts);
             })
         })
-        document.title = "Home | Yash Blogs"
+        document.title = "Blogify"
     }, [])
     return (<>
         <div className="">
