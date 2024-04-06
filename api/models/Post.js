@@ -6,7 +6,12 @@ const PostSchema = new Schema({
     summary: String,
     content: String,
     cover: String,
+    comments: [{type:Schema.Types.ObjectId,ref:'Comment'}],
     author: {type:Schema.Types.ObjectId,ref:'User'},
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
 }, {
     timestamps: true,
 })

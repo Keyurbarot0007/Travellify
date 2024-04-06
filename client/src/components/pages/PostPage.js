@@ -7,6 +7,8 @@ import MarkdownEditor from '@uiw/react-markdown-editor';
 import whatsappIcon from '../../images/whatsapp-icon.svg'
 import linkedin from '../../images/linkedin.svg'
 import twitter from '../../images/twitter.svg'
+import CommentForm from "../UI/CommentForm";
+import ShareButtons from "../UI/ShareButtons";
 
 export default function PostPage() {
     const [postInfo, setPostInfo] = useState(null);
@@ -25,6 +27,8 @@ export default function PostPage() {
         })
     }, [])
 
+    console.log(postInfo?.comments);
+
     async function handleDelete() {
         const response = await fetch(`${API_PORT}delete/${id}`, {
             method: 'DELETE',
@@ -35,6 +39,26 @@ export default function PostPage() {
             setRedirect(true);
         }
     }
+
+    async function handleComment(comment) {
+        const postid = postInfo._id;
+        const response = await fetch(`${API_PORT}comment`, {
+            method: 'POST',
+            body: JSON.stringify({ comment, postid }),
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+        });
+
+        if (response.ok) {
+            response.json().then(comment => {
+                console.log(comment);
+
+            })
+        } else {
+            console.error('Error submitting comment');
+        }
+    }
+
 
     if (!postInfo) return '';
     if (redirect) {
@@ -68,12 +92,20 @@ export default function PostPage() {
 
         <MarkdownEditor.Markdown source={postInfo.content} height="200px" />
 
-        <div className="share_post_link">
-            <a href={`whatsapp://send?text=Check%20out%20this%20awesome%20post!${SHARE_URL}${postInfo._id}`} data-action="share/whatsapp/share"><img src={whatsappIcon} alt="" /></a>
+        <CommentForm handleComment={handleComment} />
 
-            <a href={`https://twitter.com/intent/tweet?url=${SHARE_URL}${postInfo._id}&text=Check%20out%20this%20awesome%20post!`} target="_blank"><img src={twitter} alt="twitter" /></a>
-
-            <a href={`https://www.linkedin.com/shareArticle?url=${SHARE_URL}${postInfo._id}&title=Awesome%20Post`} target="_blank"><img src={linkedin} alt="linkedin" /></a>
+        <div className="mt-8">
+            {postInfo?.comments.map(comment => 
+                <>
+                    <div key={comment._id} className="p-4 border rounded shadow">
+                    <h3 className="text-lg font-semibold">{comment.user.userName}</h3>
+                    <img src={comment.user.profile} alt={comment.user.userName} className="w-10 h-10 rounded-full" />
+                    <p className="text-gray-700">{comment.text}</p>
+                    <p className="text-sm text-gray-500">{new Date(comment.date).toLocaleString()}</p>
+                </div>
+                </>
+            )}
         </div>
+        <ShareButtons post={postInfo} />
     </div>
 }  

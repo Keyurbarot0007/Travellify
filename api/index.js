@@ -11,6 +11,7 @@ const uploadMiddlewear = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const UserModel = require('./models/User');
 const PostModel = require('./models/Post');
+const CommentModel = require('./models/Comment');
 
 const app = express();
 // const CLIENT_URL = "https://yashblog.vercel.app"
@@ -150,7 +151,16 @@ app.get('/userposts/:id', async (req, res) => {
 
 app.get('/post/:id', async (req, res) => {
     const { id } = req.params;
-    const postDoc = await PostModel.findById(id).populate('author', ['userName']);
+    const postDoc = await PostModel.findById(id)
+    .populate('author', ['userName'])
+    .populate({
+        path: 'comments',
+        populate: {
+            path: 'user',
+            model: 'User'
+        }
+    });
+
     res.json(postDoc);
 })
 
@@ -208,6 +218,40 @@ app.delete('/delete/:id', async (req, res) => {
             .catch(e => res.json(e));
     })
 })
+
+app.post('/comment', async (req, res) => {
+    const { token } = req.cookies;
+    const { comment, postid } = req.body;
+    const postDoc = await PostModel.findById(postid);
+
+    jwt.verify(token, secret, {}, async (err, info) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'An error occurred while verifying the token' });
+        }
+        const userDoc = await UserModel.findOne({ userName: info.userName });
+        const commentDoc = await CommentModel.create({
+            user:userDoc,
+            text:comment
+        });
+
+        let comments = postDoc.comments;
+        comments.push(commentDoc);
+
+        await postDoc.updateOne({
+            comments
+        })
+
+        // You can now use both `comment` and `postid` here
+
+        res.json({postDoc})
+    });
+});
+
+
+
+
+
 app.listen(4000, () => {
     console.log("Server is Running on Port 4000");
 })
