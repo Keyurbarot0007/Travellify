@@ -223,6 +223,36 @@ app.delete('/delete/:id', async (req, res) => {
     })
 })
 
+// app.post('/like',async (req,res) => {
+//     const { token } = req.cookies;
+//     const { like, postid } = req.body;
+//     let postDoc = await PostModel.findById(postid);
+
+//     res.json({like,postid});
+//     // jwt.verify(token, secret, {}, async (err, info) => {
+//     //     if (err) {
+//     //         console.error(err);
+//     //         return res.status(500).json({ error: 'An error occurred while verifying the token' });
+//     //     }
+//     //     const userDoc = await UserModel.findOne({ userName: info.userName });
+        
+//     //     // postDoc = await PostModel.findById(postid)
+//     //     //     .populate('author', ['userName'])
+//     //     //     .populate({
+//     //     //         path: 'comments',
+//     //     //         populate: {
+//     //     //             path: 'user',
+//     //     //             model: 'User'
+//     //     //         },
+//     //     //         options: { sort: { 'date': -1 } } // Sort comments in descending order of date
+//     //     //     });
+
+//     //     // // You can now use both `comment` and `postid` here
+
+//     //     // res.json({ postDoc })
+//     // });
+// })
+
 app.post('/comment', async (req, res) => {
     const { token } = req.cookies;
     const { comment, postid } = req.body;
