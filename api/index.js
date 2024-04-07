@@ -152,14 +152,14 @@ app.get('/userposts/:id', async (req, res) => {
 app.get('/post/:id', async (req, res) => {
     const { id } = req.params;
     const postDoc = await PostModel.findById(id)
-    .populate('author', ['userName'])
-    .populate({
-        path: 'comments',
-        populate: {
-            path: 'user',
-            model: 'User'
-        }
-    });
+        .populate('author', ['userName'])
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        });
 
     res.json(postDoc);
 })
@@ -231,8 +231,8 @@ app.post('/comment', async (req, res) => {
         }
         const userDoc = await UserModel.findOne({ userName: info.userName });
         const commentDoc = await CommentModel.create({
-            user:userDoc,
-            text:comment
+            user: userDoc,
+            text: comment
         });
 
         let comments = postDoc.comments;
@@ -244,10 +244,9 @@ app.post('/comment', async (req, res) => {
 
         // You can now use both `comment` and `postid` here
 
-        res.json({postDoc})
+        res.json({ postDoc })
     });
 });
-
 
 
 

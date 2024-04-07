@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../store/user-context";
-import yashlogo from '../images/yash-logo.svg';
 import { API_PORT } from "../util/path";
 
 export default function Header() {
