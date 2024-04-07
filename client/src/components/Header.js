@@ -105,7 +105,7 @@ export default function Header() {
             {userName && (
                 <>
                     <Link to="/create" className="create_post_btn">Create New Post</Link>
-                    <a onClick={handleLogout}>Logout</a>
+                    <a onClick={handleLogout} className="text-color2">Logout</a>
                     <Link to={`/user/${userId}`} className="user_profile">
                         <p>hello ,{userName}</p>
                         <img src={userProfile} alt="user" />

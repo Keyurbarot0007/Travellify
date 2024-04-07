@@ -17,7 +17,7 @@ export default function IndexPage() {
     }, [])
     return (<>
         <div className="">
-            {posts.length === 0 && (<><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /></>)}
+            {posts.length === 0 && (<div className="flex "><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /></div>)}
             {posts.length > 0 && <Posts posts={posts}/>}
         </div>
     </>)

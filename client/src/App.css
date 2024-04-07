@@ -33,7 +33,7 @@ header {
   align-items: center;
 }
 
-header a {
+header a {  
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -53,10 +53,7 @@ header a.logo {
 }
 
 header .create_post_btn {
-  background: #F2F0EB;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @apply bg-color1;
 }
 
 header nav {
@@ -67,6 +64,7 @@ header nav {
 }
 
 .user_profile {
+  @apply text-color2;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -244,7 +242,8 @@ div.post-page {
 .wmde-markdown{
   padding: 32px 0;
   background-color: transparent !important;
-  color: #e9e8e8 !important;
+  color: #1B2226 !important;
+  font-size: 20px !important;
 }
 
 
@@ -259,11 +258,11 @@ div.post-page h1 {
 }
 
 div.post-page .author {
+  @apply text-color4;
   display: block;
   text-decoration: none;
   margin-bottom: 12px;
   text-align: center;
-  color: #ddd;
   opacity: 0.7;
   font-weight: 900;
 }
@@ -274,10 +273,10 @@ div.post-page .author:hover {
 }
 
 div.post-page time {
+  @apply text-color4;
   text-align: center;
   display: block;
   margin-bottom: 24px;
-  color: #ddd;
   opacity: 0.7;
 }
 

@@ -9,7 +9,7 @@ import ShareButtons from "../UI/ShareButtons";
 
 export default function PostPage() {
     const [postInfo, setPostInfo] = useState(null);
-    const [comments,setComments] = useState(null);
+    const [comments, setComments] = useState(null);
     //userInfo : who are logged In
     const { userInfo } = useContext(UserContext);
     const { id } = useParams();
@@ -86,7 +86,7 @@ export default function PostPage() {
             className="author"
         >by {postInfo?.author['userName']}
         </Link>
-        <time>{new Date(postInfo.createdAt).toUTCString()}</time>
+        <time className="text-color4">{new Date(postInfo.createdAt).toUTCString()}</time>
         {userID === postInfo.author['_id'] && (
             <div className="edit_container">
                 <Link to={`/edit/${postInfo._id}`} className="edit_btn">
@@ -105,7 +105,7 @@ export default function PostPage() {
         </div>
 
         <MarkdownEditor.Markdown source={postInfo.content} height="200px" />
-{/* 
+        {/* 
         <button onClick={handleLike}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
@@ -115,13 +115,16 @@ export default function PostPage() {
         <CommentForm handleComment={handleComment} />
 
         <div className="mt-8">
+            <h3 className="text-2xl mb-4">Comments</h3>
             {comments?.map(comment =>
                 <>
                     <div key={comment._id} className="p-4 border rounded shadow">
-                        <h3 className="text-lg font-semibold">{comment?.user.userName}</h3>
-                        <img src={comment.user.profile} alt={comment?.user.userName} className="w-10 h-10 rounded-full" />
-                        <p className="text-gray-700">{comment.text}</p>
-                        <p className="text-sm text-gray-500">{new Date(comment.date).toLocaleString()}</p>
+                        <div className="flex gap-2 items-center my-2">
+                            <img src={comment.user.profile} alt={comment?.user.userName} className="w-10 h-10 rounded-full" />
+                            <h3 className="text-lg font-semibold">{comment?.user.userName}</h3>
+                        </div>
+                        <p className="text-gray-700 py-4">{comment.text}</p>
+                        <p className="text-sm bg-color4 inline-block bg-opacity-20 p-2 rounded-full">{new Date(comment.date).toLocaleString()}</p>
                     </div>
                 </>
             )}
