@@ -18,8 +18,8 @@ export default function LadingPage() {
                             <img src={blogmain} alt="heroimage" className="aspect-video"/>
                         </div>
                         <div className="bg-color2 p-4 bg-opacity-25 rounded-lg">
-                            <h1 className="md:text-6xl text-4xl font-bold text-color4">Unleash Your Creativity with Traverllify</h1>
-                            <h3 className='mt-4 md:text-4xl text-2xl text-gray-300 text-color4'>Traverllify - Where Your Words Come to Life</h3>
+                            <h1 className="md:text-6xl text-4xl font-bold text-color4">Unleash Your Creativity with Travellify</h1>
+                            <h3 className='mt-4 md:text-4xl text-2xl text-gray-300 text-color4'>Travellify - Where Your Words Come to Life</h3>
                             <Link to='/home' className="text-2xl mt-8 md:mx-auto relative border hover:border-color1 duration-500 group cursor-pointer text-sky-50  overflow-hidden h-14 w-56 rounded-md bg-pink-800 p-2 flex justify-center items-center font-extrabold bg-color4">
                                 <p className="text-color2 hover:opacity-80">Discover More</p>
                             </Link>
