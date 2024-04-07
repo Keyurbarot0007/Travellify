@@ -12,6 +12,9 @@ const fs = require('fs');
 const UserModel = require('./models/User');
 const PostModel = require('./models/Post');
 const CommentModel = require('./models/Comment');
+const OpenAI = require("openai");
+
+const openai = new OpenAI();
 
 const app = express();
 // const CLIENT_URL = "https://yashblog.vercel.app"
@@ -222,7 +225,7 @@ app.delete('/delete/:id', async (req, res) => {
 app.post('/comment', async (req, res) => {
     const { token } = req.cookies;
     const { comment, postid } = req.body;
-    const postDoc = await PostModel.findById(postid);
+    let postDoc = await PostModel.findById(postid);
 
     jwt.verify(token, secret, {}, async (err, info) => {
         if (err) {
@@ -242,12 +245,35 @@ app.post('/comment', async (req, res) => {
             comments
         })
 
+        postDoc = await PostModel.findById(postid).populate('author', ['userName'])
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        });
+
         // You can now use both `comment` and `postid` here
 
         res.json({ postDoc })
     });
 });
 
+
+app.get('/chat',(req,res)=>{
+    async function main() {
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "system", content: "You are a helpful assistant." }],
+            model: "gpt-3.5-turbo",
+        });
+    
+        console.log(completion.choices[0]);
+    }
+    
+    main();
+    res.json({});
+})
 
 
 
