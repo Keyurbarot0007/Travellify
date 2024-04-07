@@ -161,7 +161,8 @@ app.get('/post/:id', async (req, res) => {
             populate: {
                 path: 'user',
                 model: 'User'
-            }
+            },
+            options: { sort: { 'date': -1 } } // Sort comments in descending order of date
         });
 
     res.json(postDoc);
@@ -245,14 +246,16 @@ app.post('/comment', async (req, res) => {
             comments
         })
 
-        postDoc = await PostModel.findById(postid).populate('author', ['userName'])
-        .populate({
-            path: 'comments',
-            populate: {
-                path: 'user',
-                model: 'User'
-            }
-        });
+        postDoc = await PostModel.findById(postid)
+            .populate('author', ['userName'])
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'user',
+                    model: 'User'
+                },
+                options: { sort: { 'date': -1 } } // Sort comments in descending order of date
+            });
 
         // You can now use both `comment` and `postid` here
 
@@ -261,16 +264,16 @@ app.post('/comment', async (req, res) => {
 });
 
 
-app.get('/chat',(req,res)=>{
+app.get('/chat', (req, res) => {
     async function main() {
         const completion = await openai.chat.completions.create({
             messages: [{ role: "system", content: "You are a helpful assistant." }],
             model: "gpt-3.5-turbo",
         });
-    
+
         console.log(completion.choices[0]);
     }
-    
+
     main();
     res.json({});
 })
