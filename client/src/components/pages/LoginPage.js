@@ -58,7 +58,7 @@ export default function LoginPage() {
     }
 
     useEffect(() => {
-        document.title = "Login | Yash Blogs"
+        document.title = "Login | Blogify"
     },[])
 
     if (redirect) {

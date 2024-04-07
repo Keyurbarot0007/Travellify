@@ -42,7 +42,7 @@ export default function EditPost() {
                 setContent(postInfo.content);
             })
         })
-        document.title = "Edit Post|Yash Blogs"
+        document.title = "Edit Post|Blogify"
     }, [])
 
     async function editPost(ev) {

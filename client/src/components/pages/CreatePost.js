@@ -56,7 +56,7 @@ export default function CreatePost() {
     }
 
     useEffect(() => {
-        document.title = "Create Post|Yash Blogs"
+        document.title = "Create Post|Blogify"
     }, [])
 
     if (redirect) {

@@ -62,7 +62,7 @@ export default function RegisterPage() {
     }
 
     useEffect(() => {
-        document.title = "Register | Yash Blogs"
+        document.title = "Register | Blogify"
     },[])
 
     if (redirect) {
