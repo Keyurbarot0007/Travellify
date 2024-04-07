@@ -41,8 +41,8 @@ export default function Header() {
         return (
             <>
                 <header>
-                    <Link to="/home" className="logo">
-                        Blogify
+                    <Link to="/home" className="logo text-white">
+                        Traverllify
                     </Link>
                     <nav onClick={(ev) => handleToggle(ev, true)} className="flex flex-row gap-2">
                         {userName &&
@@ -98,8 +98,8 @@ export default function Header() {
             </>)
     }
     return <header>
-        <Link to="/home" className="logo">
-            Blogify
+        <Link to="/home" className="logo text-color2">
+            Travellify
         </Link>
         <nav>
             {userName && (
@@ -116,7 +116,7 @@ export default function Header() {
                 <>
                     <Link
                         to="/login"
-                        className="hover:rotate-2 brightness-150 dark:brightness-100 group hover:shadow-lg hover:shadow-pink-700/60 transition ease-in-out hover:scale-105 p-1 rounded-xl bg-gradient-to-br from-pink-800 via-pink-600 to-pink-800 hover:from-pink-700 hover:via-pink-800 hover:to-pink-600"
+                        className="bg-color1 hover:opacity-80"
                     >
                         <div
                             className="px-6 py-2 backdrop-blur-xl bg-black/80 rounded-xl font-bold w-full h-full"
@@ -130,7 +130,7 @@ export default function Header() {
                     </Link>
                     <Link
                         to="/register"
-                        className="hover:rotate-2 brightness-150 dark:brightness-100 group hover:shadow-lg hover:shadow-sky-700/60 transition ease-in-out hover:scale-105 p-1 rounded-xl bg-gradient-to-br from-sky-800 via-sky-600 to-sky-800 hover:from-sky-700 hover:via-sky-800 hover:to-sky-600"
+                        className="text-color3 hover:op"
                     >
                         <div
                             className="px-6 py-2 backdrop-blur-xl bg-black/80 rounded-xl font-bold w-full h-full"

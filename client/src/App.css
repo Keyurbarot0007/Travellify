@@ -15,8 +15,7 @@ img {
 }
 
 body {
-  background-color: #141414;
-  color: #fff;
+  @apply bg-color2 text-color4
 }
 
 main {
@@ -26,7 +25,7 @@ main {
 
 header {
   backdrop-filter: blur(30px);
-  background-color: rgba(65, 65, 65, 0.308);
+  background-color: #1B2226;
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
@@ -54,7 +53,7 @@ header a.logo {
 }
 
 header .create_post_btn {
-  background: linear-gradient(90deg, #05B3FF 0%, #F40058 50%);
+  background: #F2F0EB;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -197,8 +196,6 @@ form.register {
 }
 
 form input {
-  background-color: #141414;
-  color: #ddd;
   display: block;
   margin-bottom: 5px;
   width: 100%;
@@ -209,11 +206,10 @@ form input {
 }
 
 form button {
+  @apply bg-color1 text-color2; 
   display: block;
   width: 100%;
   padding: 8px 12px;
-  background-color: #222;
-  color: #fff;
   border: none;
   border-radius: 4px;
 }
@@ -225,8 +221,7 @@ form.register h1 {
 }
 
 .control-error {
-  color: #F40058;
-  margin-bottom: 5px;
+  @apply text-color1
 }
 
 button {
@@ -449,11 +444,10 @@ div.userprofile_container img {
 
 
 .card {
+  background-color: white;
+  @apply text-color4;
   width: 320px;
   padding: 20px;
-  color: white;
-  background: linear-gradient(#212121, #212121) padding-box,
-    linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   border: 2px solid transparent;
   border-radius: 8px;
   display: flex;
@@ -474,7 +468,7 @@ div.userprofile_container img {
 }
 
 .card .heading {
-  font-size: 24px;
+  font-size: 18px;
   margin: 24px 0 16px;
   font-weight: 600;
 }
@@ -510,7 +504,7 @@ div.userprofile_container img {
 }
 
 .backgroundImg {
-  background-image: url('images/blog.jpg');
+  background-image: url('images/hero2blog.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
