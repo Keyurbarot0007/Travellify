@@ -56,7 +56,7 @@ export default function CreatePost() {
     }
 
     useEffect(() => {
-        document.title = "Create Post|Blogify"
+        document.title = "Create Post|Travellify"
     }, [])
 
     if (redirect) {

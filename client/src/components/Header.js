@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../store/user-context";
 import { API_PORT } from "../util/path";
+import Logo from '../images/Logo.png'
 
 export default function Header() {
     const { userInfo, setUserInfo } = useContext(UserContext);
@@ -42,6 +43,7 @@ export default function Header() {
             <>
                 <header>
                     <Link to="/home" className="logo text-white">
+                        <img src={Logo} alt="logo" className="w-12"/>
                         Traverllify
                     </Link>
                     <nav onClick={(ev) => handleToggle(ev, true)} className="flex flex-row gap-2">
@@ -99,6 +101,7 @@ export default function Header() {
     }
     return <header>
         <Link to="/home" className="logo text-color2">
+            <img src={Logo} alt="Logo" className="w-12"/>
             Travellify
         </Link>
         <nav>

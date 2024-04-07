@@ -58,7 +58,7 @@ export default function LoginPage() {
     }
 
     useEffect(() => {
-        document.title = "Login | Blogify"
+        document.title = "Login | Travellify"
     },[])
 
     if (redirect) {

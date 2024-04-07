@@ -62,7 +62,7 @@ export default function RegisterPage() {
     }
 
     useEffect(() => {
-        document.title = "Register | Blogify"
+        document.title = "Register | Travellify"
     },[])
 
     if (redirect) {

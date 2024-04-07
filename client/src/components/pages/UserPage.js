@@ -32,7 +32,7 @@ export default function UserPage() {
             </div>
             <p>{userInfo.userName}</p>
         </div>
-        <div className="user_posts mt-8">
+        <div className="user_posts mt-8 flex justify-between">
             {userposts.length === 0 && (<><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /><Loader height='150px' /></>)}
             {userposts.length > 0 && userposts.map(post => (
                 <Post {...post} key={post._id} />

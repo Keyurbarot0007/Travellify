@@ -27,7 +27,7 @@ export default function LadingPage() {
                     </div>
                     <div className="md:grid md:grid-cols-2 gap-4 md:p-48 px-4 py-8 bg-color1">
                         <div className="">
-                            <h1 className="md:text-6xl text-2xl leading-5 text-color2">Welcome to Blogify</h1>
+                            <h1 className="md:text-6xl text-2xl leading-5 text-color2">Welcome to Travellify</h1>
                             <Link to='/register' className="text-2xl mt-8 mb-8 relative border hover:border-pink-600 duration-500 group cursor-pointer text-sky-50  overflow-hidden h-14 w-56 rounded-md bg-pink-800 p-2 flex justify-center items-center font-extrabold hover:bg-color4 hover:text-color1">
                                 <div className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-pink-900 delay-150 group-hover:delay-75"></div>
                                 <div className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-pink-800 delay-150 group-hover:delay-100"></div>

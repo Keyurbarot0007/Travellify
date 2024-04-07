@@ -397,7 +397,7 @@ div.edit_container .cancel_btn:hover {
 .loader-post {
   border-radius: 12px;
   margin-bottom: 24px;
-  background: linear-gradient(240deg, #141313, #393939);
+  background: linear-gradient(240deg, #797979, #272727);
   height: 250px;
   background-size: 120%;
   animation: gradient-animation 1s ease infinite;
