@@ -84,7 +84,3 @@ To run this project locally, follow these steps:
 ## 🤝 Contributing
 
 Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
-
-## 📧 Contact
-
-If you have any questions or suggestions, feel free to contact me at yash23hingu@gmail.com.
